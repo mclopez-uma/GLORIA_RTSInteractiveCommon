@@ -46,6 +46,11 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="JOHNSON_K"/>
  *     &lt;enumeration value="JOHNSON_L"/>
  *     &lt;enumeration value="H_ALPHA"/>
+ *     &lt;enumeration value="CLEAR"/>
+ *     &lt;enumeration value="JOHNSON_G"/>
+ *     &lt;enumeration value="JOHNSON_V"/>
+ *     &lt;enumeration value="INFRARED_RG850"/>
+ *     &lt;enumeration value="DARK"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -90,7 +95,8 @@ public enum FilterType {
     JOHNSON_J("JOHNSON_J"),
     JOHNSON_K("JOHNSON_K"),
     JOHNSON_L("JOHNSON_L"),
-    H_ALPHA("H_ALPHA");
+    H_ALPHA("H_ALPHA"), CLEAR("CLEAR"), JOHNSON_G("JOHNSON_G"), JOHNSON_V("JOHNSON_V"), @XmlEnumValue("INFRARED_RG850")
+    INFRARED_RG_850("INFRARED_RG850"), DARK("DARK");
     private final String value;
 
     FilterType(String v) {

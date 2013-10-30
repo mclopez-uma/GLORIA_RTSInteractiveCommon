@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gloria.rti.fault="http://gloria.eu/rti/fault" elementFormDefault="qualified" targetNamespace="http://gloria.eu/rti/fault">
+<?xml version="1.0" encoding="UTF-8"?><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gloria.rti.fault="http://gloria.eu/rti/fault" elementFormDefault="qualified" targetNamespace="http://gloria.eu/rti/fault">
 
 	<simpleType name="errorType">
     	<restriction base="string">

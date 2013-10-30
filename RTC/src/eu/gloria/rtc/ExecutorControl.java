@@ -56,6 +56,8 @@ public class ExecutorControl implements ExecutorControlInterface {
 			throw new RTException("Error checking if an Observing Plan is running. " + ex.getMessage());
 		}
 		
+		
+		
 	}
 
 	@Override

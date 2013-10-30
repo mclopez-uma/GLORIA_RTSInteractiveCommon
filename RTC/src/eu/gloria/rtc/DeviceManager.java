@@ -10,6 +10,9 @@ import eu.gloria.rt.exception.ExecutorWrongState;
 import eu.gloria.rt.exception.RTException;
 import eu.gloria.rtc.DeviceDiscoverer;
 import eu.gloria.rtc.DeviceManagerInterface;
+import eu.gloria.rtc.op.ExtExecInfo;
+import eu.gloria.rtc.op.ExtRtsInterruptionException;
+import eu.gloria.rtc.op.OpManager;
 
 public class DeviceManager implements DeviceManagerInterface {
 	
@@ -110,11 +113,28 @@ public class DeviceManager implements DeviceManagerInterface {
 	}
 	
 	protected void checkPreconditionOpRunning() throws RTException{
-		
-		if (!this.execIsRunningOp()){
-			ExecutorWrongState ex = new ExecutorWrongState("There is not any Observing Plan running.");
-			throw ex;
+				
+		try {
+			OpManager.getOpManager().processEvent();	
+			
+			ExecutorControl execControl = new ExecutorControl();
+			ExtExecInfo info = execControl.getExtExecInfo();
+			
+			if (info.getDescription().contains("Alert target")){
+				ExecutorWrongState ex = new ExecutorWrongState("Observing Plan aborted because of an alert");
+				throw ex;
+			}
+			
+			if (!this.execIsRunningOp()){
+				ExecutorWrongState ex = new ExecutorWrongState("There is not any Observing Plan running.");
+				throw ex;
+			}
+			
+			
+		} catch (ExtRtsInterruptionException e) {
+			new RTException (e.getMessage());
 		}
+		
 	}
 	
 	

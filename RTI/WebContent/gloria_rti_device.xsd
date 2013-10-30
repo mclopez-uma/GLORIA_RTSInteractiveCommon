@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gloria.rt.entity.device="http://gloria.eu/rt/entity/device" elementFormDefault="qualified" targetNamespace="http://gloria.eu/rt/entity/device">
+<?xml version="1.0" encoding="UTF-8"?><schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gloria.rt.entity.device="http://gloria.eu/rt/entity/device" elementFormDefault="qualified" targetNamespace="http://gloria.eu/rt/entity/device">
 
     <simpleType name="deviceType">
     	<restriction base="string">
@@ -316,9 +315,13 @@
     		<enumeration value="JOHNSON_K"/>
     		<enumeration value="JOHNSON_L"/>
     		<enumeration value="H_ALPHA"/>
+    		<enumeration value="CLEAR"/>
+    		<enumeration value="JOHNSON_G"/>
+    		<enumeration value="JOHNSON_V"/>
+    		<enumeration value="INFRARED_RG850"/>
     	</restriction>
     </simpleType>
-    
+
     <complexType name="deviceFilter">
     	<complexContent>
     		<extension base="gloria.rt.entity.device:device">

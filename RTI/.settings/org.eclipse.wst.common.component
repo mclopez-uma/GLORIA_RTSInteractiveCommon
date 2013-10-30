@@ -5,9 +5,6 @@
         <dependent-module archiveName="RTD_GENERIC.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RTD_GENERIC/RTD_GENERIC">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="RTD_TAD.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RTD_TAD/RTD_TAD">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="RTD_UPM.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RTD_UPM/RTD_UPM">
             <dependency-type>uses</dependency-type>
         </dependent-module>
@@ -42,6 +39,9 @@
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="RTD_TADn.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RTD_TADn/RTD_TADn">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="RTCore.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RTCore/RTCore">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="RTI"/>

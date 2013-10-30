@@ -57,7 +57,7 @@ public class RtiExceptionFactory {
 			LogUtil.severe(null, "ErrorType.GENERAL" + inEx.getMessage());
 		}
 		
-		inEx.printStackTrace();
+		//inEx.printStackTrace();
 		
 		RtiError error = new RtiError(inEx.getMessage(), detail);
 		return error;
