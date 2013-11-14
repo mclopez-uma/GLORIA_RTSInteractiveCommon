@@ -39,4 +39,3 @@ CREATE TABLE `gloria`.`Repository` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
-insert into gloria.Repository (name, cod, connUrl, publicURL, description, active) values ("REP01", '1', "file:///usr/share/gloria/rts/repositories/rep01/", "TODO", "Default", 1);
