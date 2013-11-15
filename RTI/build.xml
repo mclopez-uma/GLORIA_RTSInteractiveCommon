@@ -6,7 +6,7 @@
 <!-- * Description: Ant XML file to configure RTI project with the proper configuration files of other projects (deps) * -->
 <!-- ******************************************************************************************************************* -->
 
-<project name="RTI" default="RTD_RTS2_DEV" >
+<project name="RTI" default="RTD_RTS2_PROD" >
 	
 	<target name="RTI-DELETE-CONFIG">
 	
@@ -50,7 +50,7 @@
 			
 	</target>
 	
-	<target name="RTD_RTS2_DEV" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG">
+	<target name="RTD_RTS2_PROD" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG">
 		
 		<echo message="BUILDING:: RTD_RTS2 >> BEGIN...."></echo>
 		<echo message="                    >> COPY:: /RTD_RTS2/config/rt_config.properties"/>
@@ -75,35 +75,7 @@
 		<echo message="BUILDING:: RTD_RTS2 >> END."></echo>
 		
 	</target>		
-	
-	<target name="RTD_RTS2_PROD" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG">
-									
-			<echo message="BUILDING:: RTD_RTS2 >> BEGIN...."></echo>
-			<echo message="                    >> COPY:: /RTD_RTS2/config/prod_rt_config.properties"/>
-			<echo message="                    >> COPY:: /RTD_RTS2/config/prod_environment_device_list_rts2.xml"/>
-			<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2.properties"/>
-			<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2_error_contexts.xml"/>
-			<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2_discovery.ini"/>
-			<echo message="                    >> COPY:: /RTD_RTS2/config/logging.properties"/>
-						
-			
-			<copy file="../RTD_RTS2/config/prod_rt_config.properties" tofile="./config/rt_config.properties" overwrite="true" />
-			<copy file="../RTD_RTS2/config/prod_environment_device_list_rts2.xml" tofile="./config/environment_device_list_rts2.xml" overwrite="true" />
-			<copy file="../RTD_RTS2/config/prod_logging.properties" tofile="./config/logging.properties" overwrite="true" />
-			
-			<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/rtd_rts2_discovery.ini"/>
 		
-			<copy todir="./config/" flatten="true">
-				<resources> 
-					<file file="../RTD_RTS2/config/rtd_rts2_discovery.ini"/>
-					<file file="../RTD_RTS2/config/rtd_rts2.properties"/>
-					<file file="../RTD_RTS2/config/rtd_rts2_error_contexts.xml"/>
-				</resources>
-			</copy> 
-				
-			<echo message="BUILDING:: RTD_RTS2 >> END."></echo>
-				
-	</target>		
 	
 	
 	<target name="RTD_GENERIC_DEV" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG">

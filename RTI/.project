@@ -4,14 +4,11 @@
 	<comment></comment>
 	<projects>
 		<project>RTD_GENERIC</project>
-		<project>RTD_UPM</project>
 		<project>RTD_RTS2</project>
 		<project>RTCatalogue</project>
-		<project>RTDI_Proxy</project>
 		<project>RTTools</project>
 		<project>RTC</project>
 		<project>RTPersistence</project>
-		<project>RTD_TADn</project>
 		<project>RTCore</project>
 	</projects>
 	<buildSpec>
