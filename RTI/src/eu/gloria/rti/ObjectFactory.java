@@ -1848,6 +1848,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link FocGetMinStep }
+     * 
+     */
+    public FocGetMinStep createFocGetMinStep() {
+        return new FocGetMinStep();
+    }
+
+	/**
      * Create an instance of {@link CamGetFPS }
      * 
      */
@@ -2082,6 +2090,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CamGetObjectExposureTime }
+     * 
+     */
+    public CamGetObjectExposureTime createCamGetObjectExposureTime() {
+        return new CamGetObjectExposureTime();
+    }
+
+	/**
      * Create an instance of {@link MntGetTrackingRate }
      * 
      */
@@ -2114,6 +2130,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CamGetObjectExposureTimeResponse }
+     * 
+     */
+    public CamGetObjectExposureTimeResponse createCamGetObjectExposureTimeResponse() {
+        return new CamGetObjectExposureTimeResponse();
+    }
+
+	/**
      * Create an instance of {@link DwrGetChannelsNumber }
      * 
      */

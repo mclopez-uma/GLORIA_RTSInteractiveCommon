@@ -757,6 +757,13 @@ public class CameraControl extends DeviceManager implements CameraControlInterfa
 		return ((RTDCameraInterface) DeviceDiscoverer.getRTD(deviceId)).camGetContinueModeImageFormats();
 	}
 
+	@Override
+	public List<Double> camGetObjectExposureTime(String deviceId, String filter, String object) throws RTException {
+		
+		getCameraDevice (deviceId);
+		return ((RTDCameraInterface) DeviceDiscoverer.getRTD(deviceId)).camGetObjectExposureTime(filter, object);
+	}
+
 	
 	
 	

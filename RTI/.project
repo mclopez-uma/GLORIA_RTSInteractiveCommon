@@ -3,13 +3,14 @@
 	<name>RTI</name>
 	<comment></comment>
 	<projects>
-		<project>RTD_GENERIC</project>
 		<project>RTD_RTS2</project>
-		<project>RTCatalogue</project>
 		<project>RTTools</project>
 		<project>RTC</project>
 		<project>RTPersistence</project>
+		<project>RTD_TADn</project>
 		<project>RTCore</project>
+		<project>RTD_TAD</project>
+		<project>RTCatalogue</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -15,6 +15,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
  *     &lt;enumeration value="FITS"/>
  *     &lt;enumeration value="JPG"/>
+ *     &lt;enumeration value="FZ"/>
  *   &lt;/restriction>
  * &lt;/simpleType>
  * </pre>
@@ -25,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
 public enum ImageFormat {
 
     FITS,
-    JPG;
+    JPG, FZ;
 
     public String value() {
         return name();

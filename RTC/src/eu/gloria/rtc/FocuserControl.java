@@ -125,4 +125,12 @@ public class FocuserControl extends DeviceManager implements FocuserInterface {
 		return ((RTDFocuserInterface) DeviceDiscoverer.getRTD(deviceId)).focGetCamera();
 	}
 
+
+	@Override
+	public long focGetMinStep(String deviceId) throws RTException {
+
+		getFocuserDevice (deviceId);
+		return ((RTDFocuserInterface) DeviceDiscoverer.getRTD(deviceId)).focGetMinStep();
+	}
+
 }

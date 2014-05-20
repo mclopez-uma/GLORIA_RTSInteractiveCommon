@@ -2,13 +2,7 @@
     <wb-module deploy-name="RTI">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <dependent-module archiveName="RTD_GENERIC.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RTD_GENERIC/RTD_GENERIC">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="RTD_RTS2.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RTD_RTS2/RTD_RTS2">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="RTCatalogue.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RTCatalogue/RTCatalogue">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="RTTools.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RTTools/RTTools">
@@ -32,7 +26,16 @@
         <dependent-module archiveName="RTPersistence.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RTPersistence/RTPersistence">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="RTD_TADn.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RTD_TADn/RTD_TADn">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="RTCore.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RTCore/RTCore">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="RTD_TAD.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RTD_TAD/RTD_TAD">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="RTCatalogue.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/RTCatalogue/RTCatalogue">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="RTI"/>

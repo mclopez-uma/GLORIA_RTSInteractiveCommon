@@ -6,8 +6,9 @@
 <!-- * Description: Ant XML file to configure RTI project with the proper configuration files of other projects (deps) * -->
 <!-- ******************************************************************************************************************* -->
 
-<project name="RTI" default="RTD_RTS2_PROD" >
-	
+
+<project name="RTI" default="RTD_RTS2_D50_PROD" >
+
 	<target name="RTI-DELETE-CONFIG">
 	
 		<echo message="BUILDING::     RTI-DELETE-CONFIG >> BEGIN...."></echo>
@@ -50,7 +51,7 @@
 			
 	</target>
 	
-	<target name="RTD_RTS2_PROD" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG">
+	<target name="RTD_RTS2_DEV" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG">
 		
 		<echo message="BUILDING:: RTD_RTS2 >> BEGIN...."></echo>
 		<echo message="                    >> COPY:: /RTD_RTS2/config/rt_config.properties"/>
@@ -75,7 +76,308 @@
 		<echo message="BUILDING:: RTD_RTS2 >> END."></echo>
 		
 	</target>		
+	
+	<target name="RTD_RTS2_PROD" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG">
+									
+			<echo message="BUILDING:: RTD_RTS2 >> BEGIN...."></echo>
+			<echo message="                    >> COPY:: /RTD_RTS2/config/prod_rt_config.properties"/>
+			<echo message="                    >> COPY:: /RTD_RTS2/config/prod_environment_device_list_rts2.xml"/>
+			<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2.properties"/>
+			<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2_error_contexts.xml"/>
+			<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+			<echo message="                    >> COPY:: /RTD_RTS2/config/logging.properties"/>
+						
+			
+			<copy file="../RTD_RTS2/config/prod_rt_config.properties" tofile="./config/rt_config.properties" overwrite="true" />
+			<copy file="../RTD_RTS2/config/prod_environment_device_list_rts2.xml" tofile="./config/environment_device_list_rts2.xml" overwrite="true" />
+			<copy file="../RTD_RTS2/config/prod_logging.properties" tofile="./config/logging.properties" overwrite="true" />
+			
+			<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/rtd_rts2_discovery.ini"/>
 		
+			<copy todir="./config/" flatten="true">
+				<resources> 
+					<file file="../RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+					<file file="../RTD_RTS2/config/rtd_rts2.properties"/>
+					<file file="../RTD_RTS2/config/rtd_rts2_error_contexts.xml"/>
+				</resources>
+			</copy> 
+				
+			<echo message="BUILDING:: RTD_RTS2 >> END."></echo>
+				
+	</target>	
+	
+	<target name="RTD_RTS2_GEN_PROD" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG">
+										
+		<echo message="BUILDING:: RTD_RTS2_GEN_PROD >> BEGIN...."></echo>
+						<echo message="                    >> COPY:: /RTD_RTS2/config/rt_config.properties"/>
+						<echo message="                    >> COPY:: /RTD_RTS2/config/environment_device_list_rts2.xml"/>
+						<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2.properties"/>
+						<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2_error_contexts.xml"/>
+						
+						<copy file="../RTD_RTS2/config/GEN_PROD_rt_config.properties" tofile="./config/rt_config.properties" overwrite="true" />
+						<copy file="../RTD_RTS2/config/GEN_PROD_environment_device_list.xml" tofile="./config/environment_device_list.xml" overwrite="true" />
+						<copy file="../RTD_RTS2/config/GEN_PROD_rtd_rts2.properties" tofile="./config/rtd_rts2.properties" overwrite="true" />
+						<copy file="../RTD_RTS2/config/GEN_PROD_rtd_rts2_error_contexts.xml" tofile="./config/rtd_rts2_error_contexts.xml" overwrite="true" />
+						<copy file="../RTD_RTS2/config/prod_logging.properties" tofile="./config/logging.properties" overwrite="true" />
+							
+						<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+						<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/logging.properties"/>
+						
+						<copy todir="./config/" flatten="true">
+							<resources> 
+								<file file="../RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+								<file file="../RTD_RTS2/config/logging.properties"/>
+							</resources>
+						</copy> 
+								
+						<echo message="BUILDING:: RTD_RTS2_GEN_PROD >> END."></echo>
+					
+		</target>	
+	
+	<target name="RTD_OMn_DEV" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG">
+		
+			<echo message="BUILDING:: RTD_UPM >> BEGIN...."></echo>
+			<echo message="                   >> COPY:: /RTD_OMn/config/rt_config.properties"/>
+			<echo message="                   >> COPY:: /RTD_OMn/config/environment_device_list_omn.xml"/>
+			<echo message="                   >> COPY:: /RTD_OMn/config/rtd_omn_discovery.ini"/>
+			<echo message="                   >> COPY:: /RTD_OMn/config/logging.properties"/>
+			
+			<copy todir="./config/" flatten="true">
+				<resources> 
+					<file file="../RTD_OMn/config/rt_config.properties"/>
+					<file file="../RTD_OMn/config/environment_device_list_omn.xml"/>
+					<file file="../RTD_OMn/config/rtd_omn_discovery.ini"/>
+					<file file="../RTD_OMn/config/logging.properties"/>
+				</resources>
+			</copy> 
+		
+			<echo message="BUILDING:: RTD_OMn >> END."></echo>
+		
+	</target>
+	
+	<target name="RTD_OMn_PROD" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG">
+			
+				<echo message="BUILDING:: RTD_UPM >> BEGIN...."></echo>
+				<echo message="                   >> COPY:: /RTD_OMn/config/rt_config.properties"/>
+				<echo message="                   >> COPY:: /RTD_OMn/config/environment_device_list_omn.xml"/>
+				<echo message="                   >> COPY:: /RTD_OMn/config/rtd_omn_discovery.ini"/>
+				<echo message="                   >> COPY:: /RTD_OMn/config/logging.properties"/>
+				
+				<copy todir="./config/" flatten="true">
+					<resources> 
+						<file file="../RTD_OMn/config/prod_rt_config.properties"/>
+						<file file="../RTD_OMn/config/prod_environment_device_list_omn.xml"/>
+						<file file="../RTD_OMn/config/rtd_omn_discovery.ini"/>
+						<file file="../RTD_OMn/config/prod_logging.properties"/>
+					</resources>
+				</copy> 
+			
+				<echo message="BUILDING:: RTD_OMn >> END."></echo>
+			
+	</target>
+	
+		
+	<target name="RTD_UPM_DEV" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG">
+		
+			<echo message="BUILDING:: RTD_UPM >> BEGIN...."></echo>
+			<echo message="                   >> COPY:: /RTD_UPM/config/rt_config.properties"/>
+			<echo message="                   >> COPY:: /RTD_UPM/config/environment_device_list_upm.xml"/>
+			<echo message="                   >> COPY:: /RTD_UPM/config/rtd_upm_discovery.ini"/>
+			<echo message="                   >> COPY:: /RTD_UPM/config/logging.properties"/>
+			
+			<copy todir="./config/" flatten="true">
+				<resources> 
+					<file file="../RTD_UPM/config/rt_config.properties"/>
+					<file file="../RTD_UPM/config/environment_device_list_upm.xml"/>
+					<file file="../RTD_UPM/config/rtd_upm_discovery.ini"/>
+					<file file="../RTD_UPM/config/logging.properties"/>
+				</resources>
+			</copy> 
+		
+			<echo message="BUILDING:: RTD_UPM >> END."></echo>
+		
+	</target>
+	
+	<target name="RTD_UPM_PROD" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG">
+		
+		<echo message="BUILDING:: RTD_UPM >> BEGIN...."></echo>
+	
+		<echo message="                   >> COPY-CUSTOM:: /RTD_UPM/config/rt_config.properties"/>
+		<echo message="                   >> COPY-CUSTOM:: /RTD_UPM/config/environment_device_list_upm.xml"/>
+		<echo message="                   >> COPY-CUSTOM:: /RTD_UPM/config/logging.properties"/>
+	
+		<copy file="../RTD_UPM/config/prod_rt_config.properties" tofile="./config/rt_config.properties" overwrite="true" />
+		<copy file="../RTD_UPM/config/prod_environment_device_list_upm.xml" tofile="./config/environment_device_list_upm.xml" overwrite="true" />
+		<copy file="../RTD_UPM/config/prod_logging.properties" tofile="./config/logging.properties" overwrite="true" />
+	
+		<echo message="                   >> COPY-GENERAL:: /RTD_UPM/config/rtd_tad_discovery.ini"/>
+	
+		<copy todir="./config/" flatten="true">
+			<resources> 
+				<file file="../RTD_UPM/config/environment_device_list_upm.xml"/>
+				<file file="../RTD_UPM/config/rtd_upm_discovery.ini"/>
+			</resources>
+		</copy> 
+		
+		<echo message="BUILDING:: RTD_UPM >> END."></echo>
+	</target>		
+	
+	<target name="RTD_TADn_DEV" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG">
+		
+			<echo message="BUILDING:: RTD_TADn >> BEGIN...."></echo>
+			<echo message="                   >> COPY:: /RTD_TADn/config/rt_config.properties"/>
+			<echo message="                   >> COPY:: /RTD_TADn/config/dome.properties"/>
+			<echo message="                   >> COPY:: /RTD_TADn/config/telescopes.properties"/>
+			<echo message="                   >> COPY:: /RTD_TADn/config/environment_device_list_tadn.xml"/>
+			<echo message="                   >> COPY:: /RTD_TADn/config/rtd_tad_discovery.ini"/>
+			<echo message="                   >> COPY:: /RTD_TADn/config/logging.properties"/>
+		
+			<copy todir="./config/" flatten="true">
+				<resources>
+					<file file="../RTD_TADn/config/rt_config.properties"/>
+					<file file="../RTD_TADn/config/dome.properties"/>
+					<file file="../RTD_TADn/config/telescopes.properties"/>
+					<file file="../RTD_TADn/config/environment_device_list_tadn.xml"/>
+					<file file="../RTD_TADn/config/rtd_tadn_discovery.ini"/>
+					<file file="../RTD_TADn/config/logging.properties"/>
+				</resources>
+			</copy> 
+		
+			<echo message="BUILDING:: RTD_TADn >> END."></echo>
+		</target>
+	
+	<target name="RTD_TADn_PROD" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG">
+			
+			<echo message="BUILDING:: RTD_TAD >> BEGIN...."></echo>
+		
+			<echo message="                   >> COPY-CUSTOM:: /RTD_TADn/config/rt_config.properties"/>
+			<echo message="                   >> COPY-CUSTOM:: /RTD_TADn/config/environment_device_list_tad.xml"/>
+			<echo message="                   >> COPY-CUSTOM:: /RTD_TADn/config/logging.properties"/>
+		
+			<copy file="../RTD_TADn/config/prod_rt_config.properties" tofile="./config/rt_config.properties" overwrite="true" />
+			<copy file="../RTD_TADn/config/prod_environment_device_list_tadn.xml" tofile="./config/environment_device_list_tadn.xml" overwrite="true" />
+			<copy file="../RTD_TADn/config/prod_logging.properties" tofile="./config/logging.properties" overwrite="true" />
+		
+			<echo message="                   >> COPY-GENERAL:: /RTD_TADn/config/dome.properties"/>
+			<echo message="                   >> COPY-GENERAL:: /RTD_TADn/config/telescopes.properties"/>
+			<echo message="                   >> COPY-GENERAL:: /RTD_TADn/config/rtd_tadn_discovery.ini"/>
+		
+			<copy todir="./config/" flatten="true">
+				<resources>
+					<file file="../RTD_TADn/config/dome.properties"/>
+					<file file="../RTD_TADn/config/telescopes.properties"/>
+					<file file="../RTD_TADn/config/rtd_tadn_discovery.ini"/>
+				</resources>
+			</copy> 
+			
+			<echo message="BUILDING:: RTD_TADn >> END."></echo>
+		</target>	
+	
+	<target name="RTD_TAD_DEV" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG">
+	
+		<echo message="BUILDING:: RTD_TAD >> BEGIN...."></echo>
+		<echo message="                   >> COPY:: /RTD_TAD/config/rt_config.properties"/>
+		<echo message="                   >> COPY:: /RTD_TAD/config/dome.properties"/>
+		<echo message="                   >> COPY:: /RTD_TAD/config/telescopes.properties"/>
+		<echo message="                   >> COPY:: /RTD_TAD/config/environment_device_list_tad.xml"/>
+		<echo message="                   >> COPY:: /RTD_TAD/config/rtd_tad_discovery.ini"/>
+		<echo message="                   >> COPY:: /RTD_TAD/config/logging.properties"/>
+	
+		<copy todir="./config/" flatten="true">
+			<resources>
+				<file file="../RTD_TAD/config/rt_config.properties"/>
+				<file file="../RTD_TAD/config/dome.properties"/>
+				<file file="../RTD_TAD/config/telescopes.properties"/>
+				<file file="../RTD_TAD/config/environment_device_list_tad.xml"/>
+				<file file="../RTD_TAD/config/rtd_tad_discovery.ini"/>
+				<file file="../RTD_TAD/config/logging.properties"/>
+			</resources>
+		</copy> 
+	
+		<echo message="BUILDING:: RTD_TAD >> END."></echo>
+	</target>
+
+	<target name="RTD_TAD_PROD" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG">
+		
+		<echo message="BUILDING:: RTD_TAD >> BEGIN...."></echo>
+	
+		<echo message="                   >> COPY-CUSTOM:: /RTD_TAD/config/rt_config.properties"/>
+		<echo message="                   >> COPY-CUSTOM:: /RTD_TAD/config/environment_device_list_tad.xml"/>
+		<echo message="                   >> COPY-CUSTOM:: /RTD_TAD/config/logging.properties"/>
+	
+		<copy file="../RTD_TAD/config/prod_rt_config.properties" tofile="./config/rt_config.properties" overwrite="true" />
+		<copy file="../RTD_TAD/config/prod_environment_device_list_tad.xml" tofile="./config/environment_device_list_tad.xml" overwrite="true" />
+		<copy file="../RTD_TAD/config/prod_logging.properties" tofile="./config/logging.properties" overwrite="true" />
+	
+		<echo message="                   >> COPY-GENERAL:: /RTD_TAD/config/dome.properties"/>
+		<echo message="                   >> COPY-GENERAL:: /RTD_TAD/config/telescopes.properties"/>
+		<echo message="                   >> COPY-GENERAL:: /RTD_TAD/config/rtd_tad_discovery.ini"/>
+	
+		<copy todir="./config/" flatten="true">
+			<resources>
+				<file file="../RTD_TAD/config/dome.properties"/>
+				<file file="../RTD_TAD/config/telescopes.properties"/>
+				<file file="../RTD_TAD/config/rtd_tad_discovery.ini"/>
+			</resources>
+		</copy> 
+		
+		<echo message="BUILDING:: RTD_TAD >> END."></echo>
+	</target>	
+	
+	<target name="RTD_TAD_CANARCLOUD" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG">
+			
+			<echo message="BUILDING:: RTD_TAD_CANARCLOUD >> BEGIN...."></echo>
+		
+			<echo message="                   >> COPY-CUSTOM:: /RTD_TAD/config/rt_config.properties"/>
+			<echo message="                   >> COPY-CUSTOM:: /RTD_TAD/config/environment_device_list_tad.xml"/>
+			<echo message="                   >> COPY-CUSTOM:: /RTD_TAD/config/logging.properties"/>
+		
+			<copy file="../RTD_TAD/config/canarcloud_rt_config.properties" tofile="./config/rt_config.properties" overwrite="true" />
+			<copy file="../RTD_TAD/config/canarcloud_environment_device_list_tad.xml" tofile="./config/environment_device_list_tad.xml" overwrite="true" />
+			<copy file="../RTD_TAD/config/canarcloud_logging.properties" tofile="./config/logging.properties" overwrite="true" />
+		
+			<echo message="                   >> COPY-GENERAL:: /RTD_TAD/config/dome.properties"/>
+			<echo message="                   >> COPY-GENERAL:: /RTD_TAD/config/telescopes.properties"/>
+			<echo message="                   >> COPY-GENERAL:: /RTD_TAD/config/rtd_tad_discovery.ini"/>
+		
+			<copy todir="./config/" flatten="true">
+				<resources>
+					<file file="../RTD_TAD/config/dome.properties"/>
+					<file file="../RTD_TAD/config/telescopes.properties"/>
+					<file file="../RTD_TAD/config/rtd_tad_discovery.ini"/>
+				</resources>
+			</copy> 
+			
+			<echo message="BUILDING:: RTD_TAD_CANARCLOUD >> END."></echo>
+		</target>	
+	
+	<target name="RTD_TADn_CANARCLOUD" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG">
+				
+				<echo message="RTD_TADn_CANARCLOUD >> BEGIN...."></echo>
+			
+				<echo message="                   >> COPY-CUSTOM:: /RTD_TADn/config/rt_config.properties"/>
+				<echo message="                   >> COPY-CUSTOM:: /RTD_TADn/config/environment_device_list_tadn.xml"/>
+				<echo message="                   >> COPY-CUSTOM:: /RTD_TADn/config/logging.properties"/>
+				<echo message="                   >> COPY-CUSTOM:: /RTD_TADn/config/rtd_tad_discovery.ini"/>
+			
+				<copy file="../RTD_TADn/config/canarcloud_rt_config.properties" tofile="./config/rt_config.properties" overwrite="true" />
+				<copy file="../RTD_TADn/config/canarcloud_environment_device_list_tadn.xml" tofile="./config/environment_device_list_tad.xml" overwrite="true" />
+				<copy file="../RTD_TADn/config/canarcloud_logging.properties" tofile="./config/logging.properties" overwrite="true" />
+				<copy file="../RTD_TADn/config/rtd_tadn_discovery.ini" tofile="./config/rtd_tad_discovery.ini" overwrite="true" />
+			
+				<echo message="                   >> COPY-GENERAL:: /RTD_TADn/config/dome.properties"/>
+				<echo message="                   >> COPY-GENERAL:: /RTD_TADn/config/telescopes.properties"/>
+			
+				<copy todir="./config/" flatten="true">
+					<resources>
+						<file file="../RTD_TADn/config/dome.properties"/>
+						<file file="../RTD_TADn/config/telescopes.properties"/>
+					</resources>
+				</copy> 
+				
+				<echo message="BUILDING:: RTD_TADn_CANARCLOUD >> END."></echo>
+	</target>	
+	
 	
 	
 	<target name="RTD_GENERIC_DEV" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG">
@@ -103,6 +405,376 @@
 		<echo message="BUILDING:: RTD_GENERIC >> END."></echo>
 	</target>
 	
+	<target name="RTD_RTS2_BART_DEV" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG, COPY-RTD_RTS2-COMMON">
+					
+			<echo message="BUILDING:: RTD_RTS2_BART_DEV >> BEGIN...."></echo>
+			<echo message="                    >> COPY:: /RTD_RTS2/config/rt_config.properties"/>
+			<echo message="                    >> COPY:: /RTD_RTS2/config/environment_device_list_rts2.xml"/>
+			<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2.properties"/>
+			<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2_error_contexts.xml"/>
+			
+			<copy file="../RTD_RTS2/config/BART_DEV_rt_config.properties" tofile="./config/rt_config.properties" overwrite="true" />
+			<copy file="../RTD_RTS2/config/BART_DEV_environment_device_list.xml" tofile="./config/environment_device_list.xml" overwrite="true" />
+			<copy file="../RTD_RTS2/config/BART_DEV_rtd_rts2.properties" tofile="./config/rtd_rts2.properties" overwrite="true" />
+			<copy file="../RTD_RTS2/config/BART_DEV_rtd_rts2_error_contexts.xml" tofile="./config/rtd_rts2_error_contexts.xml" overwrite="true" />
+			<copy file="../RTD_RTS2/resources/cacerts" tofile="./config/cacerts" overwrite="true" />
+		
+			<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+			<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/logging.properties"/>
+			
+			<copy todir="./config/" flatten="true">
+				<resources> 
+					<file file="../RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+					<file file="../RTD_RTS2/config/logging.properties"/>
+				</resources>
+			</copy> 
+					
+			<echo message="BUILDING:: RTD_RTS2_BART_DEV >> END."></echo>
+		</target>
 	
+	<target name="RTD_RTS2_BART_PROD" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG, COPY-RTD_RTS2-COMMON">
+						
+				<echo message="BUILDING:: RTD_RTS2_BART_PROD >> BEGIN...."></echo>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/rt_config.properties"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/environment_device_list_rts2.xml"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2.properties"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2_error_contexts.xml"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/resources/cacerts"/>
+				
+				<copy file="../RTD_RTS2/config/BART_PROD_rt_config.properties" tofile="./config/rt_config.properties" overwrite="true" />
+				<copy file="../RTD_RTS2/config/BART_PROD_environment_device_list.xml" tofile="./config/environment_device_list.xml" overwrite="true" />
+				<copy file="../RTD_RTS2/config/BART_PROD_rtd_rts2.properties" tofile="./config/rtd_rts2.properties" overwrite="true" />
+				<copy file="../RTD_RTS2/config/BART_PROD_rtd_rts2_error_contexts.xml" tofile="./config/rtd_rts2_error_contexts.xml" overwrite="true" />
+				<copy file="../RTD_RTS2/config/prod_logging.properties" tofile="./config/logging.properties" overwrite="true" />		
+				<copy file="../RTD_RTS2/resources/cacerts" tofile="./config/cacerts" overwrite="true" />
+					
+				<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+				<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/logging.properties"/>
+				
+				<copy todir="./config/" flatten="true">
+					<resources> 
+						<file file="../RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+						<file file="../RTD_RTS2/config/logging.properties"/>
+					</resources>
+				</copy> 
+						
+				<echo message="BUILDING:: RTD_RTS2_BART_PROD >> END."></echo>
+			</target>
+	
+	<target name="RTD_RTS2_D50_DEV" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG, COPY-RTD_RTS2-COMMON">
+						
+				<echo message="BUILDING:: RTD_RTS2_D50_DEV >> BEGIN...."></echo>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/rt_config.properties"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/environment_device_list_rts2.xml"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2.properties"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2_error_contexts.xml"/>
+				
+				<copy file="../RTD_RTS2/config/D50_DEV_rt_config.properties" tofile="./config/rt_config.properties" overwrite="true" />
+				<copy file="../RTD_RTS2/config/D50_DEV_environment_device_list.xml" tofile="./config/environment_device_list.xml" overwrite="true" />
+				<copy file="../RTD_RTS2/config/D50_DEV_rtd_rts2.properties" tofile="./config/rtd_rts2.properties" overwrite="true" />
+				<copy file="../RTD_RTS2/config/D50_DEV_rtd_rts2_error_contexts.xml" tofile="./config/rtd_rts2_error_contexts.xml" overwrite="true" />
+				<copy file="../RTD_RTS2/resources/cacerts" tofile="./config/cacerts" overwrite="true" />
+			
+				<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+				<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/logging.properties"/>
+				
+				<copy todir="./config/" flatten="true">
+					<resources> 
+						<file file="../RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+						<file file="../RTD_RTS2/config/logging.properties"/>
+					</resources>
+				</copy> 
+						
+				<echo message="BUILDING:: RTD_RTS2_D50_DEV >> END."></echo>
+			</target>
+		
+		<target name="RTD_RTS2_D50_PROD" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG, COPY-RTD_RTS2-COMMON">
+							
+					<echo message="BUILDING:: RTD_RTS2_D50_PROD >> BEGIN...."></echo>
+					<echo message="                    >> COPY:: /RTD_RTS2/config/rt_config.properties"/>
+					<echo message="                    >> COPY:: /RTD_RTS2/config/environment_device_list_rts2.xml"/>
+					<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2.properties"/>
+					<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2_error_contexts.xml"/>
+					<echo message="                    >> COPY:: /RTD_RTS2/resources/cacerts"/>
+					
+					<copy file="../RTD_RTS2/config/D50_PROD_rt_config.properties" tofile="./config/rt_config.properties" overwrite="true" />
+					<copy file="../RTD_RTS2/config/D50_PROD_environment_device_list.xml" tofile="./config/environment_device_list.xml" overwrite="true" />
+					<copy file="../RTD_RTS2/config/D50_PROD_rtd_rts2.properties" tofile="./config/rtd_rts2.properties" overwrite="true" />
+					<copy file="../RTD_RTS2/config/D50_PROD_rtd_rts2_error_contexts.xml" tofile="./config/rtd_rts2_error_contexts.xml" overwrite="true" />
+					<copy file="../RTD_RTS2/config/D50_PROD_logging.properties" tofile="./config/logging.properties" overwrite="true" />		
+					<copy file="../RTD_RTS2/resources/cacerts" tofile="./config/cacerts" overwrite="true" />
+						
+					<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+					<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/logging.properties"/>
+					
+					<copy todir="./config/" flatten="true">
+						<resources> 
+							<file file="../RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+							<file file="../RTD_RTS2/config/logging.properties"/>
+						</resources>
+					</copy> 
+							
+					<echo message="BUILDING:: RTD_RTS2_D50_PROD >> END."></echo>
+				</target>
+	
+	<target name="RTD_RTS2_WATCHER_DEV" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG, COPY-RTD_RTS2-COMMON">
+						
+				<echo message="BUILDING:: RTD_RTS2_BOOTES01_DEV >> BEGIN...."></echo>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/rt_config.properties"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/environment_device_list_rts2.xml"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2.properties"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2_error_contexts.xml"/>
+				
+				<copy file="../RTD_RTS2/config/WATCHER_DEV_rt_config.properties" tofile="./config/rt_config.properties" overwrite="true" />
+				<copy file="../RTD_RTS2/config/WATCHER_DEV_environment_device_list.xml" tofile="./config/environment_device_list.xml" overwrite="true" />
+				<copy file="../RTD_RTS2/config/WATCHER_DEV_rtd_rts2.properties" tofile="./config/rtd_rts2.properties" overwrite="true" />
+				<copy file="../RTD_RTS2/config/WATCHER_DEV_rtd_rts2_error_contexts.xml" tofile="./config/rtd_rts2_error_contexts.xml" overwrite="true" />
+					
+				<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+				<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/logging.properties"/>
+				
+				<copy todir="./config/" flatten="true">
+					<resources> 
+						<file file="../RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+						<file file="../RTD_RTS2/config/logging.properties"/>
+					</resources>
+				</copy> 
+						
+				<echo message="BUILDING:: RTD_RTS2_WATCHER_DEV >> END."></echo>
+			</target>
+	
+	<target name="RTD_RTS2_WATCHER_PROD" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG, COPY-RTD_RTS2-COMMON">
+							
+					<echo message="BUILDING:: RTD_RTS2_BOOTES01_DEV >> BEGIN...."></echo>
+					<echo message="                    >> COPY:: /RTD_RTS2/config/rt_config.properties"/>
+					<echo message="                    >> COPY:: /RTD_RTS2/config/environment_device_list_rts2.xml"/>
+					<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2.properties"/>
+					<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2_error_contexts.xml"/>
+					<echo message="                    >> COPY:: /RTD_RTS2/config/logging.properties"/>
+					
+					<copy file="../RTD_RTS2/config/WATCHER_PROD_rt_config.properties" tofile="./config/rt_config.properties" overwrite="true" />
+					<copy file="../RTD_RTS2/config/WATCHER_PROD_environment_device_list.xml" tofile="./config/environment_device_list.xml" overwrite="true" />
+					<copy file="../RTD_RTS2/config/WATCHER_PROD_rtd_rts2.properties" tofile="./config/rtd_rts2.properties" overwrite="true" />
+					<copy file="../RTD_RTS2/config/WATCHER_PROD_rtd_rts2_error_contexts.xml" tofile="./config/rtd_rts2_error_contexts.xml" overwrite="true" />
+					<copy file="../RTD_RTS2/config/prod_logging.properties" tofile="./config/logging.properties" overwrite="true" />
+						
+					<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+					
+					<copy todir="./config/" flatten="true">
+						<resources> 
+							<file file="../RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+						</resources>
+					</copy> 
+							
+					<echo message="BUILDING:: RTD_RTS2_WATCHER_PROD >> END."></echo>
+				</target>
+	
+	<target name="RTD_RTS2_BOOTES01_DEV" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG, COPY-RTD_RTS2-COMMON">
+				
+		<echo message="BUILDING:: RTD_RTS2_BOOTES01_DEV >> BEGIN...."></echo>
+		<echo message="                    >> COPY:: /RTD_RTS2/config/rt_config.properties"/>
+		<echo message="                    >> COPY:: /RTD_RTS2/config/environment_device_list_rts2.xml"/>
+		<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2.properties"/>
+		<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2_error_contexts.xml"/>
+		
+		<copy file="../RTD_RTS2/config/BOOTES01_DEV_rt_config.properties" tofile="./config/rt_config.properties" overwrite="true" />
+		<copy file="../RTD_RTS2/config/BOOTES01_DEV_environment_device_list.xml" tofile="./config/environment_device_list.xml" overwrite="true" />
+		<copy file="../RTD_RTS2/config/BOOTES01_DEV_rtd_rts2.properties" tofile="./config/rtd_rts2.properties" overwrite="true" />
+		<copy file="../RTD_RTS2/config/BOOTES01_DEV_rtd_rts2_error_contexts.xml" tofile="./config/rtd_rts2_error_contexts.xml" overwrite="true" />
+			
+		<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+		<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/logging.properties"/>
+		
+		<copy todir="./config/" flatten="true">
+			<resources> 
+				<file file="../RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+				<file file="../RTD_RTS2/config/logging.properties"/>
+			</resources>
+		</copy> 
+				
+		<echo message="BUILDING:: RTD_RTS2_BOOTES01_DEV >> END."></echo>
+	</target>	
+	
+	<target name="RTD_RTS2_BOOTES01_PROD" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG">
+						
+		<echo message="BUILDING:: RTD_RTS2_BOOTES01_PROD >> BEGIN...."></echo>
+		<echo message="                    >> COPY:: /RTD_RTS2/config/rt_config.properties"/>
+		<echo message="                    >> COPY:: /RTD_RTS2/config/environment_device_list_rts2.xml"/>
+		<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2.properties"/>
+		<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2_error_contexts.xml"/>
+		<echo message="                    >> COPY:: /RTD_RTS2/config/logging.properties"/>
+		
+		<copy file="../RTD_RTS2/config/BOOTES01_PROD_rt_config.properties" tofile="./config/rt_config.properties" overwrite="true" />
+		<copy file="../RTD_RTS2/config/BOOTES01_PROD_environment_device_list.xml" tofile="./config/environment_device_list.xml" overwrite="true" />
+		<copy file="../RTD_RTS2/config/BOOTES01_PROD_rtd_rts2.properties" tofile="./config/rtd_rts2.properties" overwrite="true" />
+		<copy file="../RTD_RTS2/config/BOOTES01_PROD_rtd_rts2_error_contexts.xml" tofile="./config/rtd_rts2_error_contexts.xml" overwrite="true" />
+		<copy file="../RTD_RTS2/config/prod_logging.properties" tofile="./config/logging.properties" overwrite="true" />
+					
+		<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+				
+		<copy todir="./config/" flatten="true">
+			<resources> 
+				<file file="../RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+			</resources>
+		</copy> 
+						
+		<echo message="BUILDING:: RTD_RTS2_BOOTES01_PROD >> END."></echo>
+	</target>
+	
+	<target name="RTD_RTS2_B1A_DEV" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG, COPY-RTD_RTS2-COMMON">
+						
+				<echo message="BUILDING:: RTD_RTS2_B1A_DEV >> BEGIN...."></echo>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/rt_config.properties"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/environment_device_list_rts2.xml"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2.properties"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2_error_contexts.xml"/>
+				
+				<copy file="../RTD_RTS2/config/B1A_DEV_rt_config.properties" tofile="./config/rt_config.properties" overwrite="true" />
+				<copy file="../RTD_RTS2/config/B1A_DEV_environment_device_list.xml" tofile="./config/environment_device_list.xml" overwrite="true" />
+				<copy file="../RTD_RTS2/config/B1A_DEV_rtd_rts2.properties" tofile="./config/rtd_rts2.properties" overwrite="true" />
+				<copy file="../RTD_RTS2/config/B1A_DEV_rtd_rts2_error_contexts.xml" tofile="./config/rtd_rts2_error_contexts.xml" overwrite="true" />
+					
+				<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+				<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/logging.properties"/>
+				
+				<copy todir="./config/" flatten="true">
+					<resources> 
+						<file file="../RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+						<file file="../RTD_RTS2/config/logging.properties"/>
+					</resources>
+				</copy> 
+						
+				<echo message="BUILDING:: RTD_RTS2_B1A_DEV >> END."></echo>
+			</target>	
+			
+			<target name="RTD_RTS2_B1A_PROD" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG">
+								
+				<echo message="BUILDING:: RTD_RTS2_B1A_PROD >> BEGIN...."></echo>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/rt_config.properties"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/environment_device_list_rts2.xml"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2.properties"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2_error_contexts.xml"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/logging.properties"/>
+				
+				<copy file="../RTD_RTS2/config/B1A_PROD_rt_config.properties" tofile="./config/rt_config.properties" overwrite="true" />
+				<copy file="../RTD_RTS2/config/B1A_PROD_environment_device_list.xml" tofile="./config/environment_device_list.xml" overwrite="true" />
+				<copy file="../RTD_RTS2/config/B1A_PROD_rtd_rts2.properties" tofile="./config/rtd_rts2.properties" overwrite="true" />
+				<copy file="../RTD_RTS2/config/B1A_PROD_rtd_rts2_error_contexts.xml" tofile="./config/rtd_rts2_error_contexts.xml" overwrite="true" />
+				<copy file="../RTD_RTS2/config/prod_logging.properties" tofile="./config/logging.properties" overwrite="true" />
+							
+				<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+						
+				<copy todir="./config/" flatten="true">
+					<resources> 
+						<file file="../RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+					</resources>
+				</copy> 
+								
+				<echo message="BUILDING:: RTD_RTS2_B1A_PROD >> END."></echo>
+			</target>
+	
+	<target name="RTD_RTS2_BOOTES02_DEV" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG, COPY-RTD_RTS2-COMMON">
+							
+		<echo message="BUILDING:: RTD_RTS2_BOOTES02_DEV >> BEGIN...."></echo>
+		<echo message="                    >> COPY:: /RTD_RTS2/config/rt_config.properties"/>
+		<echo message="                    >> COPY:: /RTD_RTS2/config/environment_device_list_rts2.xml"/>
+		<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2.properties"/>
+		<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2_error_contexts.xml"/>
+								
+		<copy file="../RTD_RTS2/config/BOOTES02_DEV_rt_config.properties" tofile="./config/rt_config.properties" overwrite="true" />
+		<copy file="../RTD_RTS2/config/BOOTES02_DEV_environment_device_list.xml" tofile="./config/environment_device_list.xml" overwrite="true" />
+		<copy file="../RTD_RTS2/config/BOOTES02_DEV_rtd_rts2.properties" tofile="./config/rtd_rts2.properties" overwrite="true" />
+		<copy file="../RTD_RTS2/config/BOOTES02_DEV_rtd_rts2_error_contexts.xml" tofile="./config/rtd_rts2_error_contexts.xml" overwrite="true" />
+						
+		<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+		<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/logging.properties"/>
+					
+		<copy todir="./config/" flatten="true">
+			<resources> 
+				<file file="../RTD_RTS2/config/rtd_rts2_discovery.ini"/>	
+				<file file="../RTD_RTS2/config/logging.properties"/>
+			</resources>
+		</copy> 
+							
+		<echo message="BUILDING:: RTD_RTS2_BOOTES02_DEV >> END."></echo>
+	</target>
+	
+	<target name="RTD_RTS2_BOOTES02_PROD" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG, COPY-RTD_RTS2-COMMON">
+							
+				<echo message="BUILDING:: RTD_RTS2_BOOTES02_PRE >> BEGIN...."></echo>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/rt_config.properties"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/environment_device_list_rts2.xml"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2.properties"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2_error_contexts.xml"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/logging.properties"/>
+								
+				<copy file="../RTD_RTS2/config/BOOTES02_PROD_rt_config.properties" tofile="./config/rt_config.properties" overwrite="true" />
+				<copy file="../RTD_RTS2/config/BOOTES02_PROD_environment_device_list.xml" tofile="./config/environment_device_list.xml" overwrite="true" />
+				<copy file="../RTD_RTS2/config/BOOTES02_PROD_rtd_rts2.properties" tofile="./config/rtd_rts2.properties" overwrite="true" />
+				<copy file="../RTD_RTS2/config/BOOTES02_PROD_rtd_rts2_error_contexts.xml" tofile="./config/rtd_rts2_error_contexts.xml" overwrite="true" />
+				<copy file="../RTD_RTS2/config/prod_logging.properties" tofile="./config/logging.properties" overwrite="true" />
+						
+				<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+					
+				<copy todir="./config/" flatten="true">
+					<resources> 
+						<file file="../RTD_RTS2/config/rtd_rts2_discovery.ini"/>	
+					</resources>
+				</copy> 
+							
+				<echo message="BUILDING:: RTD_RTS2_BOOTES02_PROD >> END."></echo>
+		</target>
+	
+	<target name="RTD_RTS2_BOOTES03_DEV" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG, COPY-RTD_RTS2-COMMON">
+								
+			<echo message="BUILDING:: RTD_RTS2_BOOTES03_DEV >> BEGIN...."></echo>
+			<echo message="                    >> COPY:: /RTD_RTS2/config/rt_config.properties"/>
+			<echo message="                    >> COPY:: /RTD_RTS2/config/environment_device_list_rts2.xml"/>
+			<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2.properties"/>
+			<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2_error_contexts.xml"/>
+									
+			<copy file="../RTD_RTS2/config/BOOTES03_DEV_rt_config.properties" tofile="./config/rt_config.properties" overwrite="true" />
+			<copy file="../RTD_RTS2/config/BOOTES03_DEV_environment_device_list.xml" tofile="./config/environment_device_list.xml" overwrite="true" />
+			<copy file="../RTD_RTS2/config/BOOTES03_DEV_rtd_rts2.properties" tofile="./config/rtd_rts2.properties" overwrite="true" />
+			<copy file="../RTD_RTS2/config/BOOTES03_DEV_rtd_rts2_error_contexts.xml" tofile="./config/rtd_rts2_error_contexts.xml" overwrite="true" />
+							
+			<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+			<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/logging.properties"/>
+						
+			<copy todir="./config/" flatten="true">
+				<resources> 
+					<file file="../RTD_RTS2/config/rtd_rts2_discovery.ini"/>	
+				</resources>
+			</copy> 
+								
+			<echo message="BUILDING:: RTD_RTS2_BOOTES03_DEV >> END."></echo>
+	</target>
+	
+	<target name="RTD_RTS2_BOOTES03_PROD" depends="RTI-DELETE-CONFIG, COPY-RTCore-CONFIG, COPY-RTD_RTS2-COMMON">
+									
+				<echo message="BUILDING:: RTD_RTS2_BOOTES03_DEV >> BEGIN...."></echo>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/rt_config.properties"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/environment_device_list_rts2.xml"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2.properties"/>
+				<echo message="                    >> COPY:: /RTD_RTS2/config/rtd_rts2_error_contexts.xml"/>
+										
+				<copy file="../RTD_RTS2/config/BOOTES03_PROD_rt_config.properties" tofile="./config/rt_config.properties" overwrite="true" />
+				<copy file="../RTD_RTS2/config/BOOTES03_PROD_environment_device_list.xml" tofile="./config/environment_device_list.xml" overwrite="true" />
+				<copy file="../RTD_RTS2/config/BOOTES03_PROD_rtd_rts2.properties" tofile="./config/rtd_rts2.properties" overwrite="true" />
+				<copy file="../RTD_RTS2/config/BOOTES03_PROD_rtd_rts2_error_contexts.xml" tofile="./config/rtd_rts2_error_contexts.xml" overwrite="true" />
+				<copy file="../RTD_RTS2/config/prod_logging.properties" tofile="./config/logging.properties" overwrite="true" />		
+		
+				<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/rtd_rts2_discovery.ini"/>
+				<echo message="                   >> COPY-GENERAL:: /RTD_RTS2/config/logging.properties"/>
+							
+				<copy todir="./config/" flatten="true">
+					<resources> 
+						<file file="../RTD_RTS2/config/rtd_rts2_discovery.ini"/>	
+						<file file="../RTD_RTS2/config/logging.properties"/>
+					</resources>
+				</copy> 
+									
+				<echo message="BUILDING:: RTD_RTS2_BOOTES03_PROD >> END."></echo>
+		</target>
 	
 </project>  
